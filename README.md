@@ -28,7 +28,7 @@ export default {
     },
     plugins: [
         tscGenerator({
-            dist: './types',
+            dist: './dist',
         }),
     ],
 };
