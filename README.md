@@ -2,6 +2,9 @@
 
 A Rollup plugin designed to generate TypeScript types using the native tsc program. This plugin aims to improve performance by leveraging TypeScript's built-in type-checking and declaration file generation capabilities.
 
+### Why?
+I was frustrated with the slow performance and lack of type-checking in existing plugins that generate TypeScript types. So, I created this plugin, which uses the native ```tsc (TypeScript)``` compiler and includes type-checking functionality.
+
 ### Installation
 
 You can install the plugin via npm:
