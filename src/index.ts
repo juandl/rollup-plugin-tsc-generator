@@ -34,6 +34,7 @@ type StatePlugin = {
 export const tscGenerator = (opts: StatePlugin["config"] = DEFAULT_CONFIG) => {
     const persistent = {
         writeIsDone: false,
+        failed: false
     };
 
     return {
@@ -102,11 +103,20 @@ export const tscGenerator = (opts: StatePlugin["config"] = DEFAULT_CONFIG) => {
 
                     const message = ts.flattenDiagnosticMessageText(diagnostic.messageText, "\n");
 
-
                     logger.error(`${diagnostic.file.fileName} (${line + 1},${character + 1}): ${message}`);
+
+                    //Mark as failed
+                    persistent.failed = true;
                 } else {
                     logger.error(ts.flattenDiagnosticMessageText(diagnostic.messageText, "\n"));
+
+                    //Mark as failed
+                    persistent.failed = true;
                 }
+            }
+
+            if (persistent.failed) {
+                throw new Error('TypeScript emit failed');
             }
 
             // Check if there were any emitted errors
