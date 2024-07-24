@@ -1,7 +1,7 @@
 {
   "name": "rollup-plugin-tsc-generator",
-  "version": "0.0.2",
-  "description": "git ",
+  "version": "0.0.3",
+  "description": "Rollup plugin to generate typescript declarations using tsc native",
   "scripts": {
     "types": "npx tsc --emitDeclarationOnly",
     "build": "node build.js && npm run types"
